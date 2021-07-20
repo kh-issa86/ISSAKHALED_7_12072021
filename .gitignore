@@ -1,6 +1,6 @@
 /Backend/node_modules
 /backend/.env
-/Frontend/node_modules
+/Frontend/groupomania/node_modules
 
 # Editor directories and files
 .idea
