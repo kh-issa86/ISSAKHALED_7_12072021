@@ -1,56 +1,52 @@
-// import the native HTTP package from Node (allows to create a server)
-const http = require("http");
+//Server creation
+const http = require("http"); //using http to transfer data
+const app = require("./app"); //importing app.js file
 
-// Add the 'express' application
-const app = require("./app");
-
-// the normalize Port function returns a valid port, whether it is numeric or string
+//Normalize a port to make sure the port provided is a number if not a number then set it to false.
 const normalizePort = (val) => {
-  const port = parseInt(val, 10);
+    const port = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    return val;
-  }
-  if (port >= 0) {
-    return port;
-  }
-  return false;
+    if (isNaN(port)) {
+        return val;
+    }
+    if (port >= 0) {
+        return port;
+    }
+    return false;
 };
 
+//Setting the port to 3000
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
-// the errorHandler function looks for different errors and handles them appropriately. It is then saved in the server.
+//Error handling in case something malfunctions
 const errorHandler = (error) => {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-  const address = server.address();
-  const bind =
-    typeof address === "string" ? "pipe " + address : "port: " + port;
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges.");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use.");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+    if (error.syscall !== "listen") {
+        throw error;
+    }
+    const address = server.address();
+    const bind = typeof address === "string" ? "pipe " + address : "port: " + port;
+    switch (error.code) {
+        case "EACCES":
+            console.error(bind + " requires elevated privileges.");
+            process.exit(1);
+            break;
+        case "EADDRINUSE":
+            console.error(bind + " is already in use.");
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 };
 
-// create the server and call the 'Express' application to send arguments
-const server = http.createServer(app);
+const server = http.createServer(app); // using app.js to import the application's infos
 
-// an event listener is also registered, relating to the port the server is running on in the console.
-server.on("error", errorHandler);
+server.on("error", errorHandler); //Error in case something goes wrong when starting the server
 server.on("listening", () => {
-  const address = server.address();
-  const bind = typeof address === "string" ? "pipe " + address : "port " + port;
-  console.log("Listening on " + bind);
+    const address = server.address();
+    const bind = typeof address === "string" ? "pipe " + address : "port " + port; //using the port that the server will run on
+    console.log("Listening on " + bind); //confirmation message
 });
 
-server.listen(port);
+server.listen(port); //server will listen on specified port
