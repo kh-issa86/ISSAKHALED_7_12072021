@@ -1,9 +1,9 @@
 const mysql = require("mysql2");
 
-//Requiring dotenv (to hide mySQL connexion password and name -see right below)
+//Requiring dotenv (to hide mySQL connection infos )
 require("dotenv").config();
 
-//mySql connexion
+//mySql connection
 var connection = mysql.createConnection({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-//if the connection is established, the console will print "The solution is : 2"
+//if the connection is established, the console will print "The solution is : 2 , , database connection established"
 connection.query("SELECT 1 + 1 AS solution", function (err, rows, fields) {
     if (err) throw err;
 
