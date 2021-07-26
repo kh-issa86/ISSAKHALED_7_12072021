@@ -1,25 +1,24 @@
 //import packages
 const express = require("express");
+const cors = require('cors');
+const helmet = require('helmet');
 const bodyParser = require("body-parser");
 const path = require("path"); // to make path manipulation easier
 
 //Declaring routes
-const userRoutes = require("./routes/user.routes");
-const feedRoutes = require("./routes/feed.routes");
+const userRoutes = require("./routes/user");
+const postsRoutes = require("./routes/posts");
+
+//db
+const { sequelize } = require('./models/index');
 
 //Using express
 const app = express();
 
-//headers for avoiding CORS problems
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-    );
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
-    next();
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors()); // CORS - partage de ressources entre serveurs
+app.use(helmet()); // helmet
 
 //using bodyParser
 app.use(bodyParser.json());
@@ -29,11 +28,23 @@ app.get("/", (req, res) => {
 });
 
 //path to images
-app.use("/images", express.static(path.join(__dirname, "images")));
-
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 //path to user-related routes
-app.use("/api/user", userRoutes);
+app.use('/api/users', userRoutes);
 //path to feed-related routes
-app.use("/api/feed", feedRoutes);
+
+app.use('/api/posts', postsRoutes);
+
+
+const dbTest = async function () {
+    try {
+      await sequelize.authenticate();
+      console.log('Connection has been established successfully.');
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
+  };
+  dbTest();
+
 
 module.exports = app;
