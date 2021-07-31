@@ -1,0 +1,45 @@
+{
+  "name": "backend-p7",
+  "version": "1.0.0",
+  "description": "Groupomania",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "password-validator": "^5.1.0",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kh-issa86/ISSAKHALED_7_12072021.git"
+  },
+  "keywords": [
+    "p7",
+    "OpenClassrooms",
+    "Groupomania"
+  ],
+  "author": "Khaled Issa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kh-issa86/ISSAKHALED_7_12072021/issues"
+  },
+  "homepage": "https://github.com/kh-issa86/ISSAKHALED_7_12072021#readme"
+}
