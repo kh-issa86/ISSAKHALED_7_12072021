@@ -12,11 +12,11 @@ Groupomania, a group specializing in mass distribution.
 - Goals:
 
       the presentation of the functionalities must be simple; creating an account should be simple and 
-      possible from a mobile phone; the profile must contain very little information for its completion to be rapid; 
-      deletion of the account must be possible; access to a home feed where employees publish multimedia content 
-      must be present; access to a home feed where employees publish texts must be present; 
-      users should be able to easily spot the latest employee participations;         
-      the Groupomania communications officer will be able to moderate interactions the employees communications.
+      possible from a mobile phone; the profile must contain very little information for its completion 
+      to be rapid; deletion of the account must be possible; access to a home feed where employees 
+      publish multimedia content must be present; access to a home feed where employees publish texts; 
+      users should be able to easily spot the latest employees post's;         
+      the Groupomania communications admin will be able to moderate interactions the employees communications.
 
 - Pre requisites:
 
