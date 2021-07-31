@@ -8,7 +8,6 @@ import HotFeed from "../views/HotFeed.vue";
 import NewPost from "../components/NewPost.vue";
 import Account from "../components/Account.vue";
 import SinglePost from "../components/SinglePost.vue";
-import Accounts from "../components/Accounts.vue";
 
 Vue.use(VueRouter);
 
@@ -48,11 +47,7 @@ const routes = [
     name: "singlePost",
     component: SinglePost
   },
-  {
-    path: "/accounts",
-    name: "accounts",
-    component: Accounts
-  },
+  
 
   {
     path: "/add",

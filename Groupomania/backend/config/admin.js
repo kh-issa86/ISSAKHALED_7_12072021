@@ -1,13 +1,12 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
-
-// Function which creates the admin account in the database on 1st connection if it does not exist
+// Fonction qui crée le compte admin dans la base de données à la connexion s'il n'existe pas
 function setAdmin(req, res) {
   db.User.findOne({ where: { email: "admin@groupomania.com" } || { pseudo: "admin" } })
     .then((user) => {
       if (!user) {
         bcrypt
-          .hash("Admin", 10)
+          .hash("Moderator", 10)
           .then((hash) => {
             const admin = db.User.create({
               pseudo: "admin",
@@ -18,7 +17,7 @@ function setAdmin(req, res) {
               .then((admin) => {
                 console.log({
                   admin,
-                  message: `An admin account has been created, Usernam : ${admin.pseudo} !`,
+                  message: `Your admin account has been created ${admin.email} !`,
                 });
               })
               .catch((error) => {
@@ -29,7 +28,7 @@ function setAdmin(req, res) {
             res.status(500).send({ error });
           });
       } else {
-        console.log({ message: "An admin account is already been created !!" });
+        console.log({ message: "Admin is already created" });
       }
     })
     .catch((error) => {

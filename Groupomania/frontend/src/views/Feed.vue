@@ -4,7 +4,7 @@
       <v-col sm="12" md="7" class="mx-auto">
         <v-card flat class="posts-header" elevation="7">
           <v-img
-            :src="require('../assets/icon-2.svg')"
+            :src="require('../assets/icon 2.svg')"
             class="my-2"
             contain
             elevation="7"

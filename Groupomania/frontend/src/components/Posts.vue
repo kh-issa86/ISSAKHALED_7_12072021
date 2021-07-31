@@ -24,7 +24,7 @@
                 >$vuetify.icons.account</v-icon
               >
             </v-avatar>
-            <div class="nom-date mt-3">
+            <div class="name-date mt-3">
               <span class="pseudo text-left ml-5">{{ post.User.pseudo }}</span>
               <span class="date ml-5 text-left">{{
                 post.createdAt | moment("calendar")

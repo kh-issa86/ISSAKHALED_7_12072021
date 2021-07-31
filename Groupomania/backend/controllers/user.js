@@ -43,11 +43,11 @@ exports.login = async (req, res) => {
       where: { email: req.body.email },
     }); // check if the email address is in the database
     if (user === null) {
-      return res.status(403).send({ error: "Failed connection" });
+      return res.status(403).send({ error: "E-mail address not found in the database" });
     } else {
       const hash = await bcrypt.compare(req.body.password, user.password); // comparing the password
       if (!hash) {
-        return res.status(401).send({ error: "Password is incorect  !" });
+        return res.status(401).send({ error: "Password is incorect !" });
       } else {
         const tokenObject = await token.issueJWT(user);
         res.status(200).send({

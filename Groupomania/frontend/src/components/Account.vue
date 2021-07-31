@@ -63,7 +63,7 @@
                   rounded
                   v-if="user.photo"
                   :src="user.photo"
-                  alt="Photo de profil"
+                  alt="Profil photo"
                 />
                 <v-icon
                   :color="isLoggedIn"
@@ -140,7 +140,7 @@
       <v-card-title class="post-title-box">
         <div class="d-flex flex-column update-title pl-3 pb-5">
           <span class="title font-weight-light post-title pb-5"
-            >Votre compte a été supprimé</span
+            >Youre account has been deleted !</span
           >
         </div>
       </v-card-title>
@@ -165,7 +165,7 @@ export default {
       newBio: "",
       pseudoRules: [
         (v) => v.length <= 30 || "Max 30 caractères",
-        (v) => !!v || "Le pseudo est obligatoire",
+        (v) => !!v || "Username is needed",
       ],
       bioRules: [(v) => v.length <= 400 || "Max 400 caractères"],
       file: "",
@@ -237,7 +237,7 @@ export default {
       this.$store.dispatch("logOut");
       setTimeout(() => {
         this.getBackHome();
-      }, 2000);
+      }, 15000);
     },
   },
 };

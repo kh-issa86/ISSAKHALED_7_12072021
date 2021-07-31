@@ -70,18 +70,18 @@ export default {
       isValid: true,
       hasSignedUp: false,
       emailRules: [
-        v => !!v || "L'email est obligatoire",
+        v => !!v || "E-mail is required",
         v =>
           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-          "L'email doit être valide"
+          "E-mail must be validated !"
       ],
       pseudoRules: [
-        v => v.length <= 30 || "Entre 3 et 30 caractères, sans symboles"
+        v => v.length <= 30 || "Password must be 8 letters minimum, upper and lower case, no symbols"
       ],
       passwordRules: [
         v =>
           v.length <= 30 ||
-          "Le mot de passe doit être de 8 lettres minimum, majuscules et minucules, pas de symboles"
+          "Password must be 8 letters minimum, upper and lower case, no symbols"
       ]
     };
   },
@@ -101,12 +101,12 @@ export default {
         let router = this.$router;
         setTimeout(function() {
           router.push("/posts");
-        }, 1500);
+        }, 15000);
       } catch (error) {
         this.errorMessage = error.response.data.error;
         setTimeout(() => {
           this.errorMessage = "";
-        }, 1500);
+        }, 15000);
       }
     }
   }

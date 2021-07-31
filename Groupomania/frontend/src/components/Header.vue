@@ -38,7 +38,7 @@
         v-if="isLogged === false"
         plain
         color="blue-grey darken-2"
-        aria-label="Inscription"
+        aria-label="Subscription"
         class="input-group--focused btn-logout"
         to="/signup"
         >Sign-Up</v-btn
