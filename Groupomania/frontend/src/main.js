@@ -12,7 +12,7 @@ Vue.config.productionTip = false;
 const moment = require("moment"); // gestion de l'affichage des dates avec vue-moment
 require("moment/locale/fr");
 Vue.use(require("vue-moment"), {
-  moment
+  moment,
 });
 Vue.use(Vuetify);
 const unsync = sync(store, router);
@@ -21,6 +21,6 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
 unsync(); // Unsyncs store from router

@@ -3,6 +3,10 @@ span,
 strong {
   font-size: 16px !important;
 }
+
+// .v-input:focus {
+//   border: #f9f9fa87 !important;
+// }
 .date {
   font-size: 0.7em !important;
   color: #b2aeae !important;
@@ -16,7 +20,7 @@ a {
 .pseudo {
   text-transform: capitalize !important;
   color: #b6b6b6 !important;
-  font-size: 35px !important;
+  font-size: 25px !important;
 }
 
 .nav {
@@ -27,14 +31,13 @@ a {
 .v-main {
   background-image: url("../src/assets/bg-main.jpg");
   background-repeat: repeat;
-  background-size: contain;
+  background-size: cover;
   // width: 100%;
 
   background-attachment: fixed;
 }
-.test-feed{
-  border-radius: .7em !important;
-
+.test-feed {
+  border-radius: 0.7em !important;
 }
 .home-container {
   display: flex;
@@ -94,14 +97,14 @@ a {
   position: fixed;
   // padding-top: 1em;
   margin: auto !important;
-  top: 55px;
+  top: 58px;
   left: 0;
   right: 0;
   z-index: 1;
 }
 .bloc2 {
   position: relative;
-  margin-top: 180px;
+  margin-top: 62px;
 }
 .co-li {
   color: #b2aeae;
@@ -167,22 +170,18 @@ a {
 
 // profile
 
-
 .settings {
   font-size: 2em !important;
   color: gray !important;
   text-transform: capitalize !important;
 }
 
-
 .post-box {
-  
   height: 100%;
   padding-bottom: 5em;
 }
 .post-title-box {
   background-color: #424242 !important;
-
 }
 .post-title {
   color: white;
@@ -204,11 +203,9 @@ a {
   justify-content: center;
 }
 @media screen and (max-width: 768px) {
-
-.post-title {
- margin-left: -0.5em;
-}
-
+  .post-title {
+    margin-left: -0.5em;
+  }
 }
 .post-options {
   margin-top: 1rem;
@@ -249,3 +246,34 @@ a {
 .post-card {
   margin-top: 3em;
 }
+
+.comment {
+  display: grid !important;
+  grid-template-columns: 0.1fr 1fr auto !important;
+}
+.v-avatar {
+  margin: 0 !important;
+}
+.comment__message {
+  max-width: 100% !important;
+}
+
+.comment-user {
+  display: flex;
+  flex-direction: column;
+}
+
+// .grid-container {
+//   display: grid;
+//   grid-template-columns: .2fr 2fr .2fr;
+//   grid-gap: 10px;
+//   background-color: #2196F3;
+//   padding: 10px;
+// }
+
+// .grid-container > div {
+//   background-color: rgba(255, 255, 255, 0.8);
+//   text-align: center;
+//   padding: 20px 0;
+//   font-size: 30px;
+// }

@@ -1,19 +1,16 @@
 <template>
   <v-container fluid class="post-box">
-    <v-card class="mx-auto post-card" max-width="600">
-      <v-card-title class="post-title-box">
+    <v-card class="mx-auto credentials-card" max-width="600">
+      <v-card-title class="v-card__title post-title-box">
         <div class="update-title mx-auto">
-          <h1 class="font-weight-regular titre titre_new">Modifier</h1>
-          <v-btn @click="getBackToFeed" class="mx-2 return-btn" small>
-            Retour
-          </v-btn>
+          <h1 class="font-weight-regular titre titre_new">Post Edit</h1>
         </div>
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <div v-if="showMessage" class="d-flex justify-space-between">
           <div class="d-flex flex-column mx-auto">
-            <span>Ton message: </span>
+            <span>Edit post ? </span>
             <div class="message ml-n4">
               <span>{{ post.message }}</span>
             </div>
@@ -33,7 +30,7 @@
           ></v-textarea>
         </div>
         <div class="d-flex justify-center pt-3">
-          <v-btn @click="toggleMessage" x-small> modifier </v-btn>
+          <v-btn @click="toggleMessage"> Edit </v-btn>
         </div>
       </v-card-text>
       <v-form v-model="isValid" enctype="multipart/form-data" class="validate">
@@ -84,10 +81,9 @@
               v-if="post.link"
               @click="toggleLink"
               class="mx-2 mt-2"
-              x-small
               :elevation="2"
             >
-              Changer le Gif
+              Change the Gif
             </v-btn>
             <v-btn
               v-if="post.imageUrl"
@@ -96,14 +92,15 @@
               x-small
               :elevation="2"
             >
-              Changer l'image
+              Change the image
             </v-btn>
           </div>
         </v-card-text>
         <div class="d-flex justify-center">
           <v-btn @click="onSubmit" :disabled="!isValid" class="mb-3"
-            >Poster</v-btn
+            >Post</v-btn
           >
+          <v-btn to="/posts" class="ml-1">Cancel </v-btn>
         </div>
       </v-form>
     </v-card>
@@ -124,13 +121,13 @@ export default {
       showMessage: true,
       message: "",
       link: null,
-      file: ""
+      file: "",
     };
   },
   computed: {
     post() {
       return this.$store.getters.post;
-    }
+    },
   },
   beforeMount() {
     let id = this.$route.params.id;
@@ -185,8 +182,8 @@ export default {
     },
     newText() {
       this.textInput = true;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

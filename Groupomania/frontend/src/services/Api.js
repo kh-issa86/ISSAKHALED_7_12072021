@@ -6,7 +6,7 @@ export default () => {
     baseURL: `http://localhost:3000/api/`,
 
     headers: {
-      Authorization: `${store.state.token}`
-    }
+      Authorization: `${store.state.token}`,
+    },
   });
 };

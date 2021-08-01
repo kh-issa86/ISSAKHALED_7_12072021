@@ -57,10 +57,7 @@
             :src="user.photo"
             class="photo-header"
           />
-          <v-icon
-            v-if="user.photo === null"
-            :color="isLoggedIn"
-            size="3em"
+          <v-icon v-if="user.photo === null" :color="isLoggedIn" size="3em"
             >$vuetify.icons.account</v-icon
           >
         </v-avatar>
@@ -73,8 +70,8 @@ export default {
   name: "PageHeader",
   props: {
     user: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {};
@@ -89,13 +86,13 @@ export default {
       } else {
         return "";
       }
-    }
+    },
   },
   methods: {
     getProfile(id) {
       this.$router.push(`/account/${id}`);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

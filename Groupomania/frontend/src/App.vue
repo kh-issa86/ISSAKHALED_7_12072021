@@ -18,7 +18,7 @@ export default {
   name: "app",
   components: {
     PageHeader,
-    PageFooter
+    PageFooter,
   },
   data: () => {
     return {};
@@ -26,12 +26,12 @@ export default {
   computed: {
     user() {
       return this.$store.getters.user;
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("getUsers");
     this.$store.dispatch("getUserById", this.user.id);
-  }
+  },
 };
 </script>
 <style lang="scss"></style>

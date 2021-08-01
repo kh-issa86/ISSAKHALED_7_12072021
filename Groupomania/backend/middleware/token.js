@@ -1,6 +1,6 @@
 const JWT = require("jsonwebtoken");
 const config = require("../config/config");
-require('dotenv').config();
+require("dotenv").config();
 function issueJWT(user) {
   // generating the token
   const id = user.id;
@@ -9,7 +9,9 @@ function issueJWT(user) {
     sub: id,
     iat: Date.now(),
   };
-  const signedToken = JWT.sign(payload, process.env.TOKEN_KEY, { expiresIn: expiresIn });
+  const signedToken = JWT.sign(payload, process.env.TOKEN_KEY, {
+    expiresIn: expiresIn,
+  });
   return {
     token: "Bearer " + signedToken,
     expires: expiresIn,

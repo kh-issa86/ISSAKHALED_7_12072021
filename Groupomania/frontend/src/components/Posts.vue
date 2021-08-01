@@ -14,7 +14,7 @@
                 role="avatar personnalisé"
                 v-else-if="
                   post.User.photo === null &&
-                  post.User.id === $store.state.user.id
+                    post.User.id === $store.state.user.id
                 "
                 color="green"
                 size="52px"
@@ -53,7 +53,7 @@
             <v-tooltip
               v-if="
                 $store.state.user.id === post.User.id ||
-                $store.state.user.admin === true
+                  $store.state.user.admin === true
               "
               bottom
             >
@@ -111,7 +111,7 @@
           <div class="likes">{{ post.Likes.length }} Like</div>
         </div>
         <v-divider></v-divider>
-        <v-card-actions class="p-5 d-flex justify-space-aroun">
+        <v-card-actions class="p-5 d-flex">
           <div class="d-flex align-center pr-3">
             <v-btn
               @click="likePost(post.id)"
@@ -134,49 +134,53 @@
           <div v-show="show">
             <v-divider></v-divider>
             <div class="comments-box d-flex flex-column justify-center">
+              
               <v-list
                 v-for="comment in post.Comments"
                 :key="comment.id"
                 :comment="comment"
               >
-                <v-list-item class="comment">
-                  <v-list-item-avatar class="comment_photo">
-                    <img
-                      v-if="comment.User.photo !== null"
-                      :src="comment.User.photo"
-                      alt="Photo de profil"
-                    />
-                    <v-icon
-                      v-else-if="
-                        comment.User.photo === null &&
-                        comment.UserId === $store.state.user.id
-                      "
-                      color="gray"
-                      size="32px"
-                      role="avatar"
-                      >$vuetify.icons.account</v-icon
-                    >
-                    <v-icon v-else size="32px" role="avatar"
-                      >$vuetify.icons.account</v-icon
-                    >
-                  </v-list-item-avatar>
+                <v-list-item class="comment p-0">
+                  <div class="comment-user">
+                    <v-list-item-avatar class="comment comment_photo justify-space-center">
+                      <img
+                        v-if="comment.User.photo !== null"
+                        :src="comment.User.photo"
+                        alt="Profil photo"
+                      />
+                      <v-icon
+                        v-else-if="
+                          comment.User.photo === null &&
+                            comment.UserId === $store.state.user.id
+                        "
+                        color="gray"
+                        size="32px"
+                        role="avatar"
+                        >$vuetify.icons.account</v-icon
+                      >
+                      <v-icon v-else size="32px" role="avatar"
+                        >$vuetify.icons.account</v-icon
+                      >
+                    </v-list-item-avatar>
 
-                  <v-list-item-content class="comment_body d-flex flex-row ">
-                    <strong
+                    <div
                       v-html="comment.User.pseudo"
-                      class="pr-5 text-left pseudo comment__pseudo"
-                    ></strong>
-                    
-                  </v-list-item-content>
-<span
-                      v-html="comment.message"
-                      class="text-left comment__message"
-                    ></span>
+                      class="text-center comment__pseudo"
+                    ></div>
+                  </div>
+
+                  <!-- <v-list-item-content class="comment_body d-flex flex-row ">
+                  </v-list-item-content> -->
+                  <span
+                    v-html="comment.message"
+                    class="text-left ml-3 comment__message"
+                  ></span>
+                  
                   <v-tooltip bottom>
                     <template
                       v-if="
                         $store.state.user.id === comment.UserId ||
-                        $store.state.user.admin === true
+                          $store.state.user.admin === true
                       "
                       v-slot:activator="{ on, attrs }"
                     >
@@ -244,7 +248,7 @@ export default {
       type: Object,
     },
   },
-  data: function () {
+  data: function() {
     return {
       show: false,
       width: 500,
@@ -314,5 +318,4 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -38,18 +38,22 @@
           v-if="options"
           class="d-flex flex-column justify-center my-3"
         >
-          <div class="d-flex justify-center">
-           
-          </div>
+          <div class="d-flex justify-center"></div>
           <div>
             <div class="d-flex justify-space-around">
-              <v-btn @click="toggleLink">Add Gif  <v-icon large center>
-              $vuetify.icons.link
-            </v-icon> </v-btn>
+              <v-btn @click="toggleLink"
+                >Add Gif
+                <v-icon large center>
+                  $vuetify.icons.link
+                </v-icon>
+              </v-btn>
 
-              <v-btn @click="toggleImage"> Image <v-icon large center>
-              $vuetify.icons.image
-            </v-icon></v-btn>
+              <v-btn @click="toggleImage">
+                Image
+                <v-icon large center>
+                  $vuetify.icons.image
+                </v-icon></v-btn
+              >
             </div>
           </div>
         </v-card-text>
@@ -113,11 +117,11 @@ export default {
       withImage: false,
       withText: false,
       rules: {
-        required: value => !!value || "Required."
+        required: (value) => !!value || "Required.",
       },
       message: "",
       link: null,
-      file: ""
+      file: "",
     };
   },
   computed: {
@@ -126,7 +130,7 @@ export default {
     },
     errorMessage() {
       return this.$store.getters.error;
-    }
+    },
   },
   methods: {
     toggleLink() {
@@ -150,8 +154,8 @@ export default {
       }
       this.$store.dispatch("createPost", formData);
       this.$router.push("/posts");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

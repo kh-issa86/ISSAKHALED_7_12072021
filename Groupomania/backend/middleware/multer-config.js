@@ -16,10 +16,10 @@ const storage = multer.diskStorage({
     callback(null, "upload");
   },
   filename: (req, file, callback) => {
-//defining filename to make sure there's no double
+    //defining filename to make sure there's no double
     const name = file.originalname.replace(/\.[^/.]+$/, "");
     const extension = MIME_TYPES[file.mimetype]; //Declaring the extension
-    callback(null, name + Date.now() + "." + extension);//Creating full filename with name + date + extension
+    callback(null, name + Date.now() + "." + extension); //Creating full filename with name + date + extension
   },
 });
 module.exports = multer({ storage: storage }).single("image"); // Images storing

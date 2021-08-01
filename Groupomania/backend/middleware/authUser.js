@@ -16,7 +16,6 @@ exports.valid = (req, res, next) => {
     .has()
     .not()
     .symbols(); // Has no symbols
-  
 
   if (
     !emailValidator.validate(req.body.email) ||
@@ -34,7 +33,7 @@ exports.valid = (req, res, next) => {
   }
 };
 
-  // checking the user name
+// checking the user name
 exports.checkPseudo = (req, res, next) => {
   const regex = /^[a-zA-Z0-9_]{3,30}$/; // Lettres, no space and has to be between 4 et 30 caractères
   const pseudo = req.body.pseudo;

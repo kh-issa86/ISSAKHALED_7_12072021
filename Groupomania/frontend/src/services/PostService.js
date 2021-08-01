@@ -30,5 +30,5 @@ export default {
 
   deleteComment(id) {
     return Api().delete("posts/comments/" + id);
-  }
+  },
 };

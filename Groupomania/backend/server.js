@@ -3,8 +3,8 @@ const http = require("http"); //using http to transfer data
 const app = require("./app");
 const db = require("./models/index");
 const normalizePort = (val) => {
-//Normalize a port to make sure the port provided is a number if not a number then set it to false.  
-const port = parseInt(val, 10);
+  //Normalize a port to make sure the port provided is a number if not a number then set it to false.
+  const port = parseInt(val, 10);
   if (isNaN(port)) {
     return val;
   }
@@ -16,7 +16,8 @@ const port = parseInt(val, 10);
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
-const errorHandler = (error) => { //Error handling in case something malfunctions
+const errorHandler = (error) => {
+  //Error handling in case something malfunctions
   if (error.syscall !== "listen") {
     throw error;
   }
@@ -44,8 +45,8 @@ db.sequelize.sync().then(function () {
   server.on("listening", () => {
     const address = server.address();
     const bind =
-      typeof address === "string" ? "pipe " + address : "port " + port;  //using the port that the server will run on
-    console.log("Listening on " + bind);  //confirmation message
+      typeof address === "string" ? "pipe " + address : "port " + port; //using the port that the server will run on
+    console.log("Listening on " + bind); //confirmation message
   });
   server.listen(port); //server will listen on specified port
   require("./config/admin"); // calling the admin fonction

@@ -3,7 +3,6 @@ const token = require("../middleware/token");
 const db = require("../models"); // table access
 const fs = require("fs");
 
-
 // get all posts
 exports.getAllPosts = async (req, res) => {
   try {
@@ -12,7 +11,7 @@ exports.getAllPosts = async (req, res) => {
       order: [["createdAt", "DESC"]], //order the posts
       include: [
         {
-          model: db.User, 
+          model: db.User,
           attributes: ["pseudo", "id", "photo"],
         },
         {
@@ -25,7 +24,7 @@ exports.getAllPosts = async (req, res) => {
           order: [["createdAt", "DESC"]], //order the comments
           include: [
             {
-              model: db.User, 
+              model: db.User,
               attributes: ["photo", "pseudo"],
             },
           ],
@@ -39,7 +38,7 @@ exports.getAllPosts = async (req, res) => {
     });
   }
 };
-// show the most liked posts 
+// show the most liked posts
 exports.getHotPosts = async (req, res) => {
   try {
     const posts = await db.Post.findAll({
@@ -87,7 +86,7 @@ exports.getHotPosts = async (req, res) => {
     });
   }
 };
-//get one post 
+//get one post
 exports.getOnePost = async (req, res) => {
   try {
     const post = await db.Post.findOne({
@@ -215,7 +214,9 @@ exports.updatePost = async (req, res) => {
       const newPost = await post.save({
         fields: ["message", "link", "imageUrl"],
       });
-      res.status(200).json({ newPost: newPost, messageRetour: "Post modified" });
+      res
+        .status(200)
+        .json({ newPost: newPost, messageRetour: "Post modified" });
     } else {
       res.status(400).json({ message: "You are not authorized" });
     }
@@ -237,7 +238,9 @@ exports.likePost = async (req, res, next) => {
         { where: { UserId: userId, PostId: postId } },
         { truncate: true, restartIdentity: true }
       );
-      res.status(200).send({ messageRetour: "You are no longer like this post" });
+      res
+        .status(200)
+        .send({ messageRetour: "You are no longer like this post" });
     } else {
       await db.Like.create({
         UserId: userId,

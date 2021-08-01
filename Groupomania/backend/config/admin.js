@@ -1,16 +1,21 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
+require("dotenv").config();
+
 // Fonction qui crée le compte admin dans la base de données à la connexion s'il n'existe pas
 function setAdmin(req, res) {
-  db.User.findOne({ where: { email: "admin@groupomania.com" } || { pseudo: "admin" } })
+  db.User.findOne({
+    where: { email: process.env.ADMIN_MAIL } || { pseudo: "admin" },
+  })
     .then((user) => {
       if (!user) {
         bcrypt
-          .hash("Moderator", 10)
+          .hash(process.env.ADMIN_PASSWORD, 10)
           .then((hash) => {
+            // hashing the password
             const admin = db.User.create({
               pseudo: "admin",
-              email: "admin@groupomania.com",
+              email: process.env.ADMIN_MAIL,
               password: hash,
               admin: true,
             })
@@ -35,4 +40,4 @@ function setAdmin(req, res) {
       console.log({ error });
     });
 }
-module.exports = setAdmin();
+module.exports = setAdmin(); //exporting the fonction that creats the admin account

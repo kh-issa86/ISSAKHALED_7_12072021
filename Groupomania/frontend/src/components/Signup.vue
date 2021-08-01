@@ -12,7 +12,7 @@
                 label="User name"
                 v-model="pseudo"
                 type="text"
-                :rules="[v => !!v || 'User name is required']"
+                :rules="[(v) => !!v || 'User name is required']"
                 required
                 class="input-group--focused"
               ></v-text-field>
@@ -29,7 +29,7 @@
                 label="Password"
                 v-model="password"
                 type="password"
-                :rules="[v => !!v || 'Password is required']"
+                :rules="[(v) => !!v || 'Password is required']"
                 required
                 class="input-group--focused"
                 autocomplete="off"
@@ -70,19 +70,21 @@ export default {
       isValid: true,
       hasSignedUp: false,
       emailRules: [
-        v => !!v || "E-mail is required",
-        v =>
+        (v) => !!v || "E-mail is required",
+        (v) =>
           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-          "E-mail must be validated !"
+          "E-mail must be validated !",
       ],
       pseudoRules: [
-        v => v.length <= 30 || "Password must be 8 letters minimum, upper and lower case, no symbols"
+        (v) =>
+          v.length <= 30 ||
+          "Password must be 8 letters minimum, upper and lower case, no symbols",
       ],
       passwordRules: [
-        v =>
+        (v) =>
           v.length <= 30 ||
-          "Password must be 8 letters minimum, upper and lower case, no symbols"
-      ]
+          "Password must be 8 letters minimum, upper and lower case, no symbols",
+      ],
     };
   },
   methods: {
@@ -91,7 +93,7 @@ export default {
         const response = await Auth.signup({
           pseudo: this.pseudo,
           email: this.email,
-          password: this.password
+          password: this.password,
         });
         this.message = response.data.message;
         this.$store.dispatch("setToken", response.data.token);
@@ -108,8 +110,8 @@ export default {
           this.errorMessage = "";
         }, 15000);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -19,13 +19,13 @@ export default {
   computed: {
     isLogged() {
       return this.$store.getters.isLogged;
-    }
+    },
   },
   methods: {
     logOut: function() {
       this.$store.dispatch("logOut");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

@@ -3,15 +3,6 @@
     <v-row class="bloc">
       <v-col sm="12" md="7" class="mx-auto">
         <v-card flat class="posts-header" elevation="7">
-          <v-img
-            :src="require('../assets/icon 2.svg')"
-            class="my-2"
-            contain
-            elevation="7"
-            height="60"
-            alt="logo groupomania"
-          />
-          <h1 class="font-weight-regular text-center">Home Feed</h1>
           <v-card-title
             class="d-flex header-btns justify-space-around"
             flat
@@ -114,6 +105,7 @@
 <script>
 import Posts from "@/components/Posts.vue";
 import { mdiPencilOutline } from "@mdi/js";
+
 export default {
   name: "Feed",
   components: {

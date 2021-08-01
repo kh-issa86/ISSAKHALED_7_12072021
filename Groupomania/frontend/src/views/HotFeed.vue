@@ -3,15 +3,6 @@
     <v-row class="bloc">
       <v-col sm="12" md="7" class="mx-auto">
         <v-card flat class="posts-header" elevation="7">
-          <v-img
-            :src="require('../assets/icon-2.svg')"
-            class="my-2"
-            contain
-            elevation="7"
-            height="60"
-            alt="logo groupomania"
-          />
-          <h1 class="font-weight-regular text-center">Home Feed</h1>
           <v-card-title
             class="d-flex header-btns justify-space-around"
             flat
@@ -26,6 +17,7 @@
                   color="blue-grey lighten-2"
                   class="recents"
                   v-bind="attrs"
+                  v-on="on"
                 >
                   Most recent
                 </v-btn>
@@ -118,12 +110,12 @@ import { mdiPencilOutline } from "@mdi/js";
 export default {
   name: "HotFeed",
   components: {
-    Posts
+    Posts,
   },
   data() {
     return {
       errorMessage: null,
-      mdiPencilOutline
+      mdiPencilOutline,
     };
   },
   computed: {
@@ -132,7 +124,7 @@ export default {
     },
     isLiked() {
       return this.$store.getters.isLiked;
-    }
+    },
   },
   async beforeMount() {
     this.$store.dispatch("getHotPosts");
@@ -149,10 +141,10 @@ export default {
       const data = 1;
       this.$store.dispatch("likePost", {
         id: id,
-        data: data
+        data: data,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -11,7 +11,8 @@ exports.signup = async (req, res) => {
       where: { email: req.body.email },
     });
     if (user !== null) {
-      if (user.pseudo === req.body.pseudo) { //check if the username is already been used
+      if (user.pseudo === req.body.pseudo) {
+        //check if the username is already been used
         return res.status(400).json({ error: "This username is used" });
       }
     } else {
@@ -43,7 +44,9 @@ exports.login = async (req, res) => {
       where: { email: req.body.email },
     }); // check if the email address is in the database
     if (user === null) {
-      return res.status(403).send({ error: "E-mail address not found in the database" });
+      return res
+        .status(403)
+        .send({ error: "E-mail address not found in the database" });
     } else {
       const hash = await bcrypt.compare(req.body.password, user.password); // comparing the password
       if (!hash) {
@@ -133,9 +136,7 @@ exports.updateAccount = async (req, res) => {
         messageRetour: "Your profile is modified",
       });
     } else {
-      res
-        .status(400)
-        .json({ messageRetour: "You ar not authourized" });
+      res.status(400).json({ messageRetour: "You ar not authourized" });
     }
   } catch (error) {
     return res.status(500).send({ error: "Server error" });

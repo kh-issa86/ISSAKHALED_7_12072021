@@ -12,7 +12,7 @@
                 label="E-mail"
                 v-model="email"
                 type="email"
-                :rules="[v => !!v || 'E-mail is required']"
+                :rules="[(v) => !!v || 'E-mail is required']"
                 required
                 class="input-group--focused"
                 autocomplete="off"
@@ -22,11 +22,10 @@
                 label="Password"
                 v-model="password"
                 type="password"
-                :rules="[v => !!v || 'Password is required']"
+                :rules="[(v) => !!v || 'Password is required']"
                 required
                 class="input-group--focused"
                 autocomplete="off"
-
               >
               </v-text-field>
             </v-form>
@@ -61,7 +60,7 @@ export default {
       password: "",
       errorMessage: null,
       isValid: true,
-      message: null
+      message: null,
     };
   },
   methods: {
@@ -69,7 +68,7 @@ export default {
       try {
         const response = await Auth.login({
           email: this.email,
-          password: this.password
+          password: this.password,
         });
         this.message = response.data.message;
 
@@ -88,8 +87,8 @@ export default {
           this.errorMessage = "";
         }, 500);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
