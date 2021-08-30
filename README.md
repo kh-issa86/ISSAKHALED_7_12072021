@@ -1,5 +1,6 @@
-# ISSAKHALED_7_12072021
-
+# Groupomania #
+# Project 7 at OpenClassrooms - web developer: Create a corporate social network 
+***
 
 Groupomania, a group specializing in mass distribution.
 
